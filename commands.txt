@@ -147,3 +147,7 @@ python3 ask_json.py
 
 The script failed because `max_tokens=15` was too low to generate a complete response.
 
+git add ollama/ commands.txt
+git commit -m "Add Python calls"
+git push
+

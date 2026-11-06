@@ -180,4 +180,6 @@ I still pay for storage when I STOP an instance rather than terminate it.
 
 AI Note: I used ChatGPT to help me solve some errors.
 
-git add commands.txt
+git add aws/ commands.txt
+git commit -m "Add AWS analysis results"
+git push

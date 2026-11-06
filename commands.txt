@@ -151,3 +151,33 @@ git add ollama/ commands.txt
 git commit -m "Add Python calls"
 git push
 
+cd ~/Downloads
+chmod 400 "datasci350-quiz03.pem"
+ssh -i "datasci350-quiz03.pem" ubuntu@ec2-3-139-109-45.us-east-2.compute.amazonaws.com
+
+sudo apt update
+sudo apt upgrade
+sudo apt install python3-pandas
+sudo apt install python3-matplotlib
+sudo apt install python3-seaborn
+
+cd ~/Downloads
+scp -i ~/Downloads/"datasci350-quiz03.pem" ~/Downloads/datasci350-quiz03/aws/traffic_analysis.py ~/Downloads/datasci350-quiz03/aws/website_traffic.txt ubuntu@ec2-3-139-109-45.us-east-2.compute.amazonaws.com:~
+
+python3 traffic_analysis.py > results.txt
+cat /var/lib/cloud/data/instance-id >> results.txt
+sha256sum results.txt > fingerprint.txt
+
+cd Downloads/datasci350-quiz03 
+
+scp -i ~/Downloads/"datasci350-quiz03.pem" ubuntu@ec2-3-139-109-45.us-east-2.compute.amazonaws.com:~/results.txt aws/
+
+scp -i ~/Downloads/"datasci350-quiz03.pem" ubuntu@ec2-3-139-109-45.us-east-2.compute.amazonaws.com:~/fingerprint.txt aws/
+
+scp -i ~/Downloads/"datasci350-quiz03.pem" ubuntu@ec2-3-139-109-45.us-east-2.compute.amazonaws.com:~/traffic_analysis.png aws/
+
+I still pay for storage when I STOP an instance rather than terminate it.
+
+AI Note: I used ChatGPT to help me solve some errors.
+
+git add commands.txt
